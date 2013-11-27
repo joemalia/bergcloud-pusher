@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<head>
+  <title>Push It</title>
+  <script src="http://js.pusher.com/2.1/pusher.min.js"></script>
+  <script type="text/javascript">
+    var pusher = new Pusher(<%= pusher_key.to_json %>);
+    var channel = pusher.subscribe(<%= address.to_json %>);
+    channel.bind('device-event', function(data) {
+      console.log(data.name);
+      console.log(data.payload);
+    });
+  </script>
+</head>
